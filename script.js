@@ -177,17 +177,17 @@ document.addEventListener("DOMContentLoaded",function(){
 
     e.preventDefault();
 
-    const dayVal = Number(day.value);
-    const monthVal = Number(month.value);
-    const yearVal = Number(year.value);
+    // const dayVal = Number(day.value);
+    // const monthVal = Number(month.value);
+    // const yearVal = Number(year.value);
 
-
+    let isValid = true;
    
     if(day.value.trim() === ""){
       day.classList.add("invalid");
       errD.classList.add("active");
       labelDay.classList.add("err");
-      
+      isValid = false;
     }else{
       day.classList.remove("invalid");
       errD.classList.remove("active");
@@ -199,6 +199,8 @@ document.addEventListener("DOMContentLoaded",function(){
       month.classList.add("invalid");
       errM.classList.add("active");
       labelM.classList.add("err");
+      isValid = false;
+
     }else{
       month.classList.remove("invalid");
       errM.classList.remove("active");
@@ -208,16 +210,20 @@ document.addEventListener("DOMContentLoaded",function(){
       year.classList.add("invalid");
       errY.classList.add("active");
       labelY.classList.add("err");
+      isValid = false;
     }else{
       year.classList.remove("invalid");
       errY.classList.remove("active");
       labelY.classList.remove("err");
     }
 
+    if(!isValid) return;
+
     if (year.value.trim()> currentYear){
       validYear.classList.add("active");
       year.classList.add("invalid");
       labelY.classList.add("err");
+      return;
     }else{
       validYear.classList.remove("active");
       year.classList.remove("invalid");
@@ -228,6 +234,7 @@ document.addEventListener("DOMContentLoaded",function(){
       validMOnth.classList.add("active");
       month.classList.add("invalid");
       labelM.classList.add("err");
+      return;
     }else{
       validMOnth.classList.remove("active");
       month.classList.remove("invalid");
@@ -239,29 +246,16 @@ document.addEventListener("DOMContentLoaded",function(){
       validDay.classList.add("active");
       day.classList.add("invalid");
       labelDay.classList.add("err");
+      return;
     }else{
       validDay.classList.remove("active");
       day.classList.remove("invalid");
       labelDay.classList.remove("err");
     }
 
-
     yearsSp.textContent = getY();
     monthSp.textContent = getM();
     daySp.textContent = getD();
   });
-  
-
- 
-  
-
-  
-
-
-
-
-
-
-
 
 });
